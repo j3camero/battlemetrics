@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Ignore this file for security reasons.
+bearer-token.js
+
+# Emacs temp files.
+*~
+
+# Pretty sure I don't have to commit this file?
+package-lock.json
