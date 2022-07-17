@@ -1,7 +1,10 @@
 CREATE TABLE servers (
   id INTEGER PRIMARY KEY,
   name TEXT,
-  rank INTEGER
+  last_known_rank INTEGER,
+  server_details_update_time TEXT,
+  most_recent_session_crawl_time TEXT,
+  est_daily_sessions REAL
 );
 
 CREATE TABLE sessions (
