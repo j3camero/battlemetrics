@@ -1,4 +1,10 @@
-CREATE TABLE IF NOT EXISTS sessions (
+CREATE TABLE servers (
+  id INTEGER PRIMARY KEY,
+  name TEXT,
+  rank INTEGER
+);
+
+CREATE TABLE sessions (
   uuid TEXT PRIMARY KEY,
   server INTEGER NOT NULL,
   name TEXT NOT NULL,
