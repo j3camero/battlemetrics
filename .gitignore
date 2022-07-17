@@ -111,3 +111,6 @@ bearer-token.js
 
 # Pretty sure I don't have to commit this file?
 package-lock.json
+
+# SQLite database files.
+*.db
