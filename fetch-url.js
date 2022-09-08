@@ -48,4 +48,33 @@ async function FetchUrl(url) {
   return await RequestAsPromise(url);
 }
 
-module.exports = FetchUrl;
+const second = 1000;
+const minute = 60 * second;
+const defaultCooldowns = [
+  500,
+  1 * second,
+  2 * second,
+  5 * second,
+  10 * second,
+  30 * second,
+  1 * minute,
+  2 * minute,
+  5 * minute,
+  10 * minute,
+  20 * minute,
+  30 * minute,
+  60 * minute,
+];
+
+async function FetchUrlWithRetries(url, retryCooldowns = defaultCooldowns) {
+  try {
+    return await FetchUrl(url);
+  } catch (e) {
+    const cooldown = retryCooldowns.shift();
+    console.log(`Error fetching URL. Cooling down for ${cooldown} ms then trying again.`);
+    await Sleep(cooldown);
+    return await FetchUrlWithRetries(url, retryCooldowns);
+  }
+}
+
+module.exports = FetchUrlWithRetries;
